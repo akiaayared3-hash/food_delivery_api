@@ -4,7 +4,7 @@
   "description": "food_delivery_api",
   "license": "ISC",
   "author": "yared",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -19,6 +19,8 @@
     "express": "^5.2.1",
     "helmet": "^8.3.0",
     "jsonwebtoken": "^9.0.3",
-    "multer": "^2.4.0"
+    "multer": "^2.4.0",
+    "mysql2": "^3.24.4",
+    "zod": "^4.6.5"
   }
 }
