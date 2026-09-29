@@ -1,4 +1,3 @@
-// initDb.js
 import pool from "./db.js";
 
 export const initDb = async () => {
@@ -21,9 +20,9 @@ export const initDb = async () => {
       );
     `);
 
-    // 2. Address table
+    // 2. Addresses table
     await connection.query(`
-      CREATE TABLE IF NOT EXISTS address (
+      CREATE TABLE IF NOT EXISTS addresses (
         id INT AUTO_INCREMENT PRIMARY KEY,
         user_id INT NOT NULL,
         address_line_1 VARCHAR(225) NOT NULL,
@@ -89,7 +88,7 @@ export const initDb = async () => {
       );
     `);
 
-    // 7. Orders table
+    // 7. Orders table (FIXED: references addresses(id))
     await connection.query(`
       CREATE TABLE IF NOT EXISTS orders (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -105,7 +104,7 @@ export const initDb = async () => {
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (customer_id) REFERENCES users(id),
         FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
-        FOREIGN KEY (delivery_address_id) REFERENCES address(id)
+        FOREIGN KEY (delivery_address_id) REFERENCES addresses(id)
       );
     `);
 
@@ -171,6 +170,6 @@ export const initDb = async () => {
     console.error("❌ Error initializing database tables:", error);
     throw error;
   } finally {
-    if (connection) connection.release(); // Releases connection back to pool
+    if (connection) connection.release();
   }
 };

@@ -1,16 +1,15 @@
 {
   "name": "food_delivery_api",
   "version": "1.0.0",
-  "description": "food_delivery_api",
+  "description": "Food delivery REST API",
   "license": "ISC",
   "author": "yared",
   "type": "module",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
+  "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js",
+    "test": "vitest"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -22,5 +21,9 @@
     "multer": "^2.4.0",
     "mysql2": "^3.24.4",
     "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "supertest": "^7.1.4",
+    "vitest": "^3.2.4"
   }
 }
